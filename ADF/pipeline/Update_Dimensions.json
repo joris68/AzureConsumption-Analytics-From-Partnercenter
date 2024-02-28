@@ -1,0 +1,113 @@
+{
+	"name": "Update_Dimensions",
+	"properties": {
+		"activities": [
+			{
+				"name": "SP_Update_DimCustomer",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[prc_LoadDimCustomer]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Consumption_Warehouse",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Update_DimFieldRevenueAccoutnability",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[prc_LoadDimFieldRevenueAccountability]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Consumption_Warehouse",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Update_DimPartner",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[prc_LoadDimPartner]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Consumption_Warehouse",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Update_DimService",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[prc_LoadDimService]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Consumption_Warehouse",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Update_DimSubscription",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[prc_LoadDimSubscription]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Consumption_Warehouse",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "ETL_pipes"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-08-24T14:19:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,66 @@
+{
+	"name": "ETL_Master",
+	"properties": {
+		"activities": [
+			{
+				"name": "EP_Copy_Blob_from_Staging",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CD_Blob_to_staging",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EP_Update_Dimensions",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EP_Copy_Blob_from_Staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Update_Dimensions",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EP_Update_Fact",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EP_Update_Dimensions",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Update_Fact",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "ETL_pipes"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-08-24T14:19:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

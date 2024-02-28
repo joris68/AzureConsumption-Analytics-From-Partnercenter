@@ -1,0 +1,230 @@
+{
+	"name": "Report_for_staging_once",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "storage_link",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "20230913AzureUsage.csv",
+				"folderPath": "2023/09",
+				"fileSystem": "azureusage"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PGAMpnId",
+				"type": "String"
+			},
+			{
+				"name": "SubscriptionId",
+				"type": "String"
+			},
+			{
+				"name": "SubscriptionStartDate",
+				"type": "String"
+			},
+			{
+				"name": "SubscriptionEndDate",
+				"type": "String"
+			},
+			{
+				"name": "FirstUseDate",
+				"type": "String"
+			},
+			{
+				"name": "SubscriptionState",
+				"type": "String"
+			},
+			{
+				"name": "Month",
+				"type": "String"
+			},
+			{
+				"name": "ServiceLevel1",
+				"type": "String"
+			},
+			{
+				"name": "ServiceLevel2",
+				"type": "String"
+			},
+			{
+				"name": "ServiceLevel3",
+				"type": "String"
+			},
+			{
+				"name": "ServiceLevel4",
+				"type": "String"
+			},
+			{
+				"name": "ServiceInfluencer",
+				"type": "String"
+			},
+			{
+				"name": "ServiceGroup2",
+				"type": "String"
+			},
+			{
+				"name": "ServiceGroup3",
+				"type": "String"
+			},
+			{
+				"name": "ComputeOS",
+				"type": "String"
+			},
+			{
+				"name": "ComputeOSAttribute",
+				"type": "String"
+			},
+			{
+				"name": "ComputeCoreSoftware",
+				"type": "String"
+			},
+			{
+				"name": "UsageUnits",
+				"type": "String"
+			},
+			{
+				"name": "UsageQuantity",
+				"type": "String"
+			},
+			{
+				"name": "CustomerName",
+				"type": "String"
+			},
+			{
+				"name": "CustomerTenantId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerTenantName",
+				"type": "String"
+			},
+			{
+				"name": "CustomerTpid",
+				"type": "String"
+			},
+			{
+				"name": "CustomerSegment",
+				"type": "String"
+			},
+			{
+				"name": "CustomerMarket",
+				"type": "String"
+			},
+			{
+				"name": "MPNId",
+				"type": "String"
+			},
+			{
+				"name": "PartnerName",
+				"type": "String"
+			},
+			{
+				"name": "PartnerLocation",
+				"type": "String"
+			},
+			{
+				"name": "PartnerAttributionType",
+				"type": "String"
+			},
+			{
+				"name": "SalesChannel",
+				"type": "String"
+			},
+			{
+				"name": "EnrollmentNumber",
+				"type": "String"
+			},
+			{
+				"name": "IsACRDuplicateAtPGALevel",
+				"type": "String"
+			},
+			{
+				"name": "ResellerID",
+				"type": "String"
+			},
+			{
+				"name": "ResellerName",
+				"type": "String"
+			},
+			{
+				"name": "IndustryName",
+				"type": "String"
+			},
+			{
+				"name": "VerticalName",
+				"type": "String"
+			},
+			{
+				"name": "AdminType",
+				"type": "String"
+			},
+			{
+				"name": "MonthlySubscriptionLevelACR",
+				"type": "String"
+			},
+			{
+				"name": "PartnerOneSubID",
+				"type": "String"
+			},
+			{
+				"name": "PartnerOneSubCountry",
+				"type": "String"
+			},
+			{
+				"name": "ParticipantPublicCustomerNumber",
+				"type": "String"
+			},
+			{
+				"name": "PCNSubsidiaryName",
+				"type": "String"
+			},
+			{
+				"name": "PCNPartnerName",
+				"type": "String"
+			},
+			{
+				"name": "IsDuplicateAtMpnLevel",
+				"type": "String"
+			},
+			{
+				"name": "IsDuplicateAtPgaAttributionTypeLevel",
+				"type": "String"
+			},
+			{
+				"name": "AI_OfferType",
+				"type": "String"
+			},
+			{
+				"name": "EOU",
+				"type": "String"
+			},
+			{
+				"name": "SubscriptionCount",
+				"type": "String"
+			},
+			{
+				"name": "ACR_USD",
+				"type": "String"
+			},
+			{
+				"name": "CustomerCount",
+				"type": "String"
+			},
+			{
+				"name": "CustomerTenantCount",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "Update_Fact_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "SP_Update_FactAzureUsageReport",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[prc_LoadFactAzureUsageReport]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Consumption_Warehouse",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "ETL_Test_pipes"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-08-24T14:19:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

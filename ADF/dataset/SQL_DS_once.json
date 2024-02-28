@@ -1,0 +1,235 @@
+{
+	"name": "SQL_DS_once",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Consumption_Warehouse",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PGAMpnId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SubscriptionId",
+				"type": "varchar"
+			},
+			{
+				"name": "SubscriptionStartDate",
+				"type": "date"
+			},
+			{
+				"name": "SubscriptionEndDate",
+				"type": "date"
+			},
+			{
+				"name": "FirstUseDate",
+				"type": "date"
+			},
+			{
+				"name": "SubscriptionState",
+				"type": "varchar"
+			},
+			{
+				"name": "Month",
+				"type": "date"
+			},
+			{
+				"name": "ServiceLevel1",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceLevel2",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceLevel3",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceLevel4",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceInfluencer",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceGroup2",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceGroup3",
+				"type": "varchar"
+			},
+			{
+				"name": "ComputeOS",
+				"type": "varchar"
+			},
+			{
+				"name": "ComputeOSAttribute",
+				"type": "varchar"
+			},
+			{
+				"name": "ComputeCoreSoftware",
+				"type": "varchar"
+			},
+			{
+				"name": "UsageUnits",
+				"type": "varchar"
+			},
+			{
+				"name": "UsageQuantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CustomerName",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerTenantId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerTenantName",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerTpid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CustomerSegment",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerMarket",
+				"type": "varchar"
+			},
+			{
+				"name": "MPNId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PartnerName",
+				"type": "varchar"
+			},
+			{
+				"name": "PartnerLocation",
+				"type": "varchar"
+			},
+			{
+				"name": "PartnerAttributionType",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesChannel",
+				"type": "varchar"
+			},
+			{
+				"name": "EnrollmentNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "IsACRDuplicateAtPGALevel",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ResellerID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ResellerName",
+				"type": "varchar"
+			},
+			{
+				"name": "IndustryName",
+				"type": "varchar"
+			},
+			{
+				"name": "VerticalName",
+				"type": "varchar"
+			},
+			{
+				"name": "AdminType",
+				"type": "varchar"
+			},
+			{
+				"name": "MonthlySubscriptionLevelACR",
+				"type": "varchar"
+			},
+			{
+				"name": "PartnerOneSubID",
+				"type": "varchar"
+			},
+			{
+				"name": "PartnerOneSubCountry",
+				"type": "varchar"
+			},
+			{
+				"name": "ParticipantPublicCustomerNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PCNSubsidiaryName",
+				"type": "varchar"
+			},
+			{
+				"name": "PCNPartnerName",
+				"type": "varchar"
+			},
+			{
+				"name": "IsDuplicateAtMpnLevel",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsDuplicateAtPgaAttributionTypeLevel",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AI_OfferType",
+				"type": "varchar"
+			},
+			{
+				"name": "EOU",
+				"type": "varchar"
+			},
+			{
+				"name": "SubscriptionCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ACR_USD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CustomerCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CustomerTenantCount",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "StagingArea"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

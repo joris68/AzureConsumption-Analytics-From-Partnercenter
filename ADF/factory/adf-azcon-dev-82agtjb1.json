@@ -1,0 +1,9 @@
+{
+	"name": "adf-azcon-dev-82agtjb1",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "23a512c9-49b1-470b-81e7-95412183bc40",
+		"tenantId": "a5d051de-762f-4405-9401-3201d0670f2c"
+	}
+}

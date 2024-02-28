@@ -1,0 +1,13 @@
+{
+	"name": "functionAPP_link",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "https://func-azcon-dev-82agtjb1.azurewebsites.net",
+			"authentication": "MSI",
+			"resourceId": ""
+		}
+	}
+}

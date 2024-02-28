@@ -1,0 +1,400 @@
+{
+	"name": "CD_Blob_to_staging_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "CD_Blob_to_staging",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL_truncate_staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "InsertDate",
+								"value": "20230913"
+							},
+							{
+								"name": "UpdateDate",
+								"value": "20230913"
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SubscriptionId",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SubscriptionId",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SubscriptionStartDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SubscriptionStartDate",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SubscriptionEndDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SubscriptionEndDate",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SubscriptionState",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SubscriptionState",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceLevel1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ServiceLevel1",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceLevel2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ServiceLevel2",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceLevel3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ServiceLevel3",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceLevel4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ServiceLevel4",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceGroup2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ServiceGroup2",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceGroup3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ServiceGroup3",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerTpid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CustomerTpid",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerTenantId",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CustomerTenantId",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerTenantName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CustomerTenantName",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerSegment",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CustomerSegment",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerMarket",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CustomerMarket",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "MPNId",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MPNId",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "PartnerName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PartnerName",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PartnerLocation",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PartnerLocation",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PartnerAttributionType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PartnerAttributionType",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IsACRDuplicateAtPGALevel",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IsACRDuplicateAtPGALevel",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ACR_USD",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ACR_USD",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "Month",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ReportMonth",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "InsertDate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InsertDate",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "UpdateDate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UpdateDate",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Report_for_staging_once",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Database_set",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "stg",
+							"table_name": "StagingArea"
+						}
+					}
+				]
+			},
+			{
+				"name": "SQL_truncate_staging",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "Consumption_Warehouse",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "NonQuery",
+							"text": "truncate table stg.StagingArea"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "ETL_Test_pipes"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-09-05T09:52:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

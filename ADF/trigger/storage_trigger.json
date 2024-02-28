@@ -1,0 +1,25 @@
+{
+	"name": "storage_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ETL_Master",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/azureusage/blobs/",
+			"blobPathEndsWith": "AzureUsage.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/5e5d9782-ca43-4d4e-a018-477eb00f088d/resourceGroups/rg-azcon-dev-82agtjb1/providers/Microsoft.Storage/storageAccounts/stazcondev82agtjb1",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

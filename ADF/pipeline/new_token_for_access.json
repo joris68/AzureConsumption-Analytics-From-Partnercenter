@@ -1,0 +1,134 @@
+{
+	"name": "new_token_for_access",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get_refresh_token_from_KV",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://kv-azcon-dev-82agtjb1.vault.azure.net/secrets/refreshtoken?api-version=7.0",
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "GetNew_token_from_API",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Get_refresh_token_from_KV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://login.microsoftonline.com/a5d051de-762f-4405-9401-3201d0670f2c/oauth2/v2.0/token",
+					"method": "POST",
+					"headers": {
+						"content-Type": "application/x-www-form-urlencoded"
+					},
+					"body": {
+						"value": "@concat('tenant=a5d051de-762f-4405-9401-3201d0670f2c\n&client_id=264aeca5-af3b-4734-8e36-c5a06be492b8\n&client_secret=tK58Q~EWnHP4rFkggy_uv9NJ6HFUTWZuVDWVzbEA\n&scope=https://api.partnercenter.microsoft.com/.default openid offline_access\n&redirect_uri=http://localhost:5000/signin-oidc/\n&grant_type=refresh_token\n&refresh_token=',activity('Get_refresh_token_from_KV').output.value)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Refresh_RefreshToken_in_KV",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "GetNew_token_from_API",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://kv-azcon-dev-82agtjb1.vault.azure.net/secrets/refreshtoken?api-version=7.0",
+					"method": "PUT",
+					"body": {
+						"value": "@json(concat('{\"value\" :\"',activity('GetNew_token_from_API').output.refresh_token,'\"}'))",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "RefreshBearerToken_in_KV",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "GetNew_token_from_API",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://kv-azcon-dev-82agtjb1.vault.azure.net/secrets/bearertoken?api-version=7.0",
+					"method": "PUT",
+					"body": {
+						"value": "@json(concat('{\"value\" :\"',activity('GetNew_token_from_API').output.access_token,'\"}'))",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			}
+		],
+		"variables": {
+			"bearertoken": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Preparation_pipes"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-08-24T14:19:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,50 @@
+{
+	"name": "Master_preperation",
+	"properties": {
+		"activities": [
+			{
+				"name": "EP_new_access_token",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "new_token_for_access",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Create_Ids",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "EP_new_access_token",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://func-azcon-dev-82agtjb1.azurewebsites.net/api/Create_Ids_and_Store?",
+					"method": "GET"
+				}
+			}
+		],
+		"folder": {
+			"name": "Preparation_pipes"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-09-05T09:52:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
